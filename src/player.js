@@ -4,7 +4,7 @@ class Player {
         this.width = 15;
         this.height = 40;
         this.speed = 0;
-        this.maxSpeed = 2;
+        this.maxSpeed = 5;
 
         this.position = {
             x: this.width,
@@ -13,6 +13,7 @@ class Player {
     }
 
     draw(ctx) {
+        ctx.fillStyle = '#000';
         ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     }
 
@@ -28,8 +29,8 @@ class Player {
         this.speed = 0;
     }
 
-    update(time) {
-        if (!time) return;
+    update(deltaTime) {
+        if (!deltaTime) return;
         this.position.x += this.speed;
 
         if (this.position.x < 0) {
