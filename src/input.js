@@ -14,10 +14,14 @@ class InputHandler {
         document.addEventListener('keyup', (e) => {
             switch (e.key) {
                 case "ArrowLeft":
-                    player.stop();
+                    if (player.speed < 0) {
+                        player.stop();
+                    }
                     break;
                 case "ArrowRight":
-                    player.stop();
+                    if (player.speed > 0) {
+                        player.stop();
+                    }
                     break;
                 case "ArrowUp":
                     break;

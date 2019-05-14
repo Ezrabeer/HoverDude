@@ -1,14 +1,15 @@
 class Player {
-    constructor(gameWidth, gameHeight) {
-        this.gameWidth = gameWidth;
+    constructor(game) {
+        this.gameWidth = game.gameWidth;
         this.width = 15;
         this.height = 40;
         this.speed = 0;
         this.maxSpeed = 5;
+        this.collided = false;
 
         this.position = {
             x: this.width,
-            y: gameHeight - (this.height * 2),
+            y: game.gameHeight - (this.height * 2),
         }
     }
 
@@ -18,19 +19,24 @@ class Player {
     }
 
     moveLeft() {
-        this.speed = -this.maxSpeed;
+        //fixme
+        if (!this.collided) {
+            this.speed = -this.maxSpeed;
+        }
     }
 
     moveRight() {
-        this.speed = this.maxSpeed;
+        //fixme
+        if (!this.collided) {
+            this.speed = this.maxSpeed;
+        }
     }
 
     stop() {
         this.speed = 0;
     }
 
-    update(deltaTime) {
-        if (!deltaTime) return;
+    update() {
         this.position.x += this.speed;
 
         if (this.position.x < 0) {
