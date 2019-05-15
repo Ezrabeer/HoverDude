@@ -9,9 +9,9 @@ class Game {
         this.gameHeight = gameHeight;
     }
 
-    start() {
-        this.player = new Player(this);
-        this.ladder = new Ladder(this, 50, 650, 16);
+    start(img) {
+        this.player = new Player(this, img);
+        this.ladder = new Ladder(this, 500, 630, 40);
         this.gameObjects = [this.player, this.ladder];
 
         new Input(this.player);

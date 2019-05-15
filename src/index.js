@@ -7,7 +7,8 @@ const GAME_WIDTH = canvas.width;
 const GAME_HEIGHT = canvas.height;
 
 const game = new Game(GAME_WIDTH, GAME_HEIGHT);
-game.start();
+const img = document.querySelector('#img_player_right');
+game.start(img);
 
 let lastTime = 0;
 

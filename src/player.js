@@ -1,11 +1,11 @@
 class Player {
-    constructor(game) {
+    constructor(game, img) {
         this.gameWidth = game.gameWidth;
-        this.width = 15;
-        this.height = 40;
+        this.width = 28;
+        this.height = 51;
+        this.player = img;
         this.speed = 0;
         this.maxSpeed = 5;
-        this.collided = false;
 
         this.position = {
             x: this.width,
@@ -14,22 +14,15 @@ class Player {
     }
 
     draw(ctx) {
-        ctx.fillStyle = '#000';
-        ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
+        ctx.drawImage(this.player, this.position.x, this.position.y, this.width, this.height);
     }
 
     moveLeft() {
-        //fixme
-        if (!this.collided) {
-            this.speed = -this.maxSpeed;
-        }
+        this.speed = -this.maxSpeed;
     }
 
     moveRight() {
-        //fixme
-        if (!this.collided) {
-            this.speed = this.maxSpeed;
-        }
+        this.speed = this.maxSpeed;
     }
 
     stop() {
