@@ -11,7 +11,11 @@ class InputHandler {
                     player.moveRight();
                     player.player = document.getElementById('img_player_right');
                     break;
-                case
+                case "ArrowUp":
+                    player.moveUp();
+                    break;
+                case "ArrowDown":
+                    player.moveDown();
             }
         });
         document.addEventListener('keyup', (e) => {
@@ -27,6 +31,14 @@ class InputHandler {
                     }
                     break;
                 case "ArrowUp":
+                    if (player.verticalSpeed < 0) {
+                        player.stop();
+                    }
+                    break;
+                case "ArrowDown":
+                    if (player.verticalSpeed > 0) {
+                        player.stop();
+                    }
                     break;
             }
         });

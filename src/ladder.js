@@ -5,6 +5,7 @@ class Ladder {
 
         this.gameWidth = game.gameWidth;
         this.gameHeight = game.gameHeight;
+        this.ladder = document.querySelector('#img_ladder');
 
         this.position = {
             x: x,
@@ -13,14 +14,24 @@ class Ladder {
         this.size = size;
     }
 
-    draw(ctx) {
-        ctx.fillRect(this.position.x, this.position.y, this.size, this.size);
+    climb() {
+        this.game.player.allowedClimb =
+            this.game.player.position.x > this.position.x - this.size
+            && this.game.player.position.x < this.position.x + this.size
+            && this.game.player.position.y > this.position.y - this.game.player.height
+            && this.game.player.position.y < this.position.y + this.size;
     }
 
-    update(deltaTime) {
+    draw(ctx) {
+        ctx.drawImage(this.ladder, this.position.x, this.position.y, this.size, this.size);
+        ctx.strokeStyle = 'red';
+        ctx.strokeRect(this.position.x, this.position.y, this.size, this.size);
+    }
+
+    update() {
+        console.log(this.game.player.allowedClimb);
+        this.climb();
         if (this.game.player.position.x + this.size > this.position.x) {
-            this.game.player.stop();
-            this.game.player.collided = true;
         }
 
         if (this.game.player.position.x < this.position.x + this.size) {

@@ -11,7 +11,7 @@ class Game {
 
     start(img) {
         this.player = new Player(this, img);
-        this.ladder = new Ladder(this, 500, 630, 40);
+        this.ladder = new Ladder(this, 70, 463, 36);
         this.gameObjects = [this.player, this.ladder];
 
         new Input(this.player);
